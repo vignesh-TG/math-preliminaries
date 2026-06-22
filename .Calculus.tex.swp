@@ -14,6 +14,7 @@
 \usepackage{enumitem}
 \usepackage{subfig}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 3. Header (and Footer)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,6 +118,40 @@
 \end{tikzpicture}
 \end{center}
  \caption{Axisymmetric cup with a profile of $z=ax^2$.}
+\end{figure}
+  
+  \item A toy car is moving along a track in the form of a sine curve with a constant speed $V$. Find the distance of the car from the $y-$axis time $T$ after it starts from the origin.
+  
+ \begin{figure}[h]
+ \begin{center}
+ \begin{tikzpicture}[scale=1]
+
+% Parameters
+\def\a{1}    % Amplitude
+\def\L{6}    % wavelength
+\def\tip{{Latex[width=1mm,length=3mm]}}
+
+% Axis
+\draw[->] (0,0) -- (0,1.75) node[above] {$y$};
+\draw[->] (0,0) -- (10,0) node[right] {$x$};
+
+\draw[ultra thick,domain=0:1.6*\L,samples=200]
+      plot ({\x},{\a*sin(360*\x/\L)});
+
+\draw[-] (\L/5,-1) -- (3*\L/4.4,-1);
+\draw[\tip-\tip] (\L/4,0) -- (\L/4,-1);
+\node[left] at (\L/4,-0.5) {$a$};
+
+\draw[\tip-\tip] (0,1.25) -- (\L,1.25);
+\draw[-] (\L,0) -- (\L,1.5);
+\node[above] at (\L/2,1.25) {$L$};
+
+% Label
+%\node[right] at (1.1*\R,\H+0.4) {$z=ax^2$};
+
+\end{tikzpicture}
+\end{center}
+ \caption{Track of a toy car in the form of $y = a\sin (2\pi x/L)$.}
 \end{figure}
   
   \end{enumerate}

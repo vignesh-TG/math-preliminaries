@@ -14,6 +14,7 @@
 \usepackage{enumitem}
 \usepackage{subfig}
 \usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 3. Header (and Footer)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,7 +83,7 @@ maximum.
 \begin{enumerate}
   \item Water is being fed to cylinder of height $H$ and radius $R$ at a certain flow rate $Q$. Relate $Q$ with the liquid height $h$.
   
-  \item Profile of an axisymmetric bowl is given by $z = ax^3$. While the total height of the bowl is 6 cm, it is filled only up to a height of 5 cm. (a) Find the volume of the liquid inside the cup. (b) How much can you tilt the cup before the liquid starts spilling?
+  \item Profile of an axisymmetric bowl is given by $z = ax^3$. While the total height of the bowl is H, it is filled only up to a height of h. (a) Find the volume of the liquid inside the cup. (b) How much can you tilt the cup before the liquid starts spilling?
   
  \begin{figure}[h]
  \begin{center}
@@ -133,5 +134,40 @@ maximum.
  \item In a fully developed flow through a pipe the pressure drop driving the flow is opposed by viscous friction from the walls. Under this condition, the axial velocity $u$ is governed by the equation,
    \[\frac{\mu}{r} \frac{d}{dr} \left( \frac{du}{dr}\right) = G\]
   
-  \end{enumerate}
+  \item A toy car is moving along a track in the form of a sine curve with a constant speed $V$. Find the distance of the car from the $y-$axis time $T$ after it starts from the origin.
+  
+ \begin{figure}[h]
+ \begin{center}
+ \begin{tikzpicture}[scale=1]
+
+% Parameters
+\def\a{1}    % Amplitude
+\def\L{6}    % wavelength
+\def\tip{{Latex[width=1mm,length=3mm]}}
+
+% Axis
+\draw[->] (0,0) -- (0,1.75) node[above] {$y$};
+\draw[->] (0,0) -- (10,0) node[right] {$x$};
+
+\draw[ultra thick,domain=0:1.6*\L,samples=200]
+      plot ({\x},{\a*sin(360*\x/\L)});
+
+\draw[-] (\L/5,-1) -- (3*\L/4.4,-1);
+\draw[\tip-\tip] (\L/4,0) -- (\L/4,-1);
+\node[left] at (\L/4,-0.5) {$a$};
+
+\draw[\tip-\tip] (0,1.25) -- (\L,1.25);
+\draw[-] (\L,0) -- (\L,1.5);
+\node[above] at (\L/2,1.25) {$L$};
+
+% Label
+%\node[right] at (1.1*\R,\H+0.4) {$z=ax^2$};
+
+\end{tikzpicture}
+\end{center}
+ \caption{Track of a toy car in the form of $y = a\sin (2\pi x/L)$.}
+\end{figure}
+
+\item A cube of ice has sides $a$ m long. If it starts melting at the rate of  $e^{kt}\;\text{m}^3/\text{s}$, where $t$ is time in seconds and $k$ is a constant. How much time is required for the cube to melt completely?
+\end{enumerate}
 \end{document}
